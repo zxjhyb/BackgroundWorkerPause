@@ -27,6 +27,9 @@ namespace BackgroundWorkerPause
             backgroundWorker.DoWork += new DoWorkEventHandler(backgroundWorker_DoWork);
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorker_RunWorkerCompleted);
             backgroundWorker.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker_ProgressChanged);
+            
+            btnPause.Enabled = false;
+            btnCancel.Enabled = false;
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -58,6 +61,9 @@ namespace BackgroundWorkerPause
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            btnStart.Enabled = true;
+            btnPause.Enabled = false;
+            btnCancel.Enabled = false;
             if(e.Cancelled)
             {
                 MessageBox.Show("用户取消了操作");
@@ -66,7 +72,6 @@ namespace BackgroundWorkerPause
             {
                 MessageBox.Show("正常完成了操作");
             }
-            btnStart.Enabled = true;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -74,6 +79,14 @@ namespace BackgroundWorkerPause
             btnStart.Enabled = false;
             progressBar1.Value = 0;
             backgroundWorker.RunWorkerAsync();
+            if(!btnPause.Enabled)
+            {
+                btnPause.Enabled = true;
+            }
+            if(!btnCancel.Enabled)
+            {
+                btnCancel.Enabled = true;
+            }
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -82,11 +95,19 @@ namespace BackgroundWorkerPause
             {
                 manualResetEvent.Reset();
                 btnPause.Text = "继续";
+                if (btnCancel.Enabled)
+                {
+                    btnCancel.Enabled = false;
+                }
             }
             else
             {
                 manualResetEvent.Set();
                 btnPause.Text = "暂停";
+                if (!btnCancel.Enabled)
+                {
+                    btnCancel.Enabled = true;
+                }
             }
         }
 
