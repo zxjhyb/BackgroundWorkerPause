@@ -1,2 +1,2 @@
 # BackgroundWorkerPause
-BackgroundWorker 可暂停
+BackgroundWorker 使用ManualResetEvent执行暂停操作
