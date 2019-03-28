@@ -66,10 +66,12 @@ namespace BackgroundWorkerPause
             {
                 MessageBox.Show("正常完成了操作");
             }
+            btnStart.Enabled = true;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            btnStart.Enabled = false;
             progressBar1.Value = 0;
             backgroundWorker.RunWorkerAsync();
         }
