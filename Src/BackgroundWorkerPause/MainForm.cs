@@ -53,8 +53,6 @@ namespace BackgroundWorkerPause
 
         private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-
-            //progressBar1.Value = 0;
             progressBar1.Value = e.ProgressPercentage;
         }
 
