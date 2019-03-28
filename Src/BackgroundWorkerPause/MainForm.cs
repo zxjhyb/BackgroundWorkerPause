@@ -54,7 +54,7 @@ namespace BackgroundWorkerPause
         private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
 
-            progressBar1.Value = 0;
+            //progressBar1.Value = 0;
             progressBar1.Value = e.ProgressPercentage;
         }
 
@@ -67,6 +67,7 @@ namespace BackgroundWorkerPause
             else
             {
                 MessageBox.Show("正常完成了操作");
+                progressBar1.Value = 0;
             }
         }
 
