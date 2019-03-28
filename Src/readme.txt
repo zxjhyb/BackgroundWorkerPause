@@ -1,0 +1,1 @@
+BackgroundWorker可以暂停示例。
