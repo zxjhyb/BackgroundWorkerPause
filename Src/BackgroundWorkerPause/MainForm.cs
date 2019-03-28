@@ -46,8 +46,8 @@ namespace BackgroundWorkerPause
 
                 manualResetEvent.WaitOne();
 
-                Thread.Sleep(500);
                 backgroundWorker.ReportProgress(i + 1);
+                Thread.Sleep(500);
             }
         }
 
