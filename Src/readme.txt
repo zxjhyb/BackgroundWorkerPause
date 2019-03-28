@@ -1,1 +1,1 @@
-BackgroundWorker可以暂停示例。
+BackgroundWorker 使用ManualResetEvent执行暂停操作示例。
